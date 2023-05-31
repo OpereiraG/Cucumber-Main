@@ -16,11 +16,11 @@ import static org.hamcrest.Matchers.*;
 public class HardCodedExamples {
 
     String baseURI = RestAssured.baseURI = "http://hrm.syntaxtechs.net/syntaxapi/api";
-    String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2ODQ5NzEyMDAsImlzcyI6ImxvY2FsaG9zdCIsImV4cCI6MTY4NTAxNDQwMCwidXNlcklkIjoiNTI5NCJ9.LI-h-CSI12WMwO-M8-ycDvfVrr2Ii0kb_-yvtukIPXU";
+    String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2ODUyMDcwMTgsImlzcyI6ImxvY2FsaG9zdCIsImV4cCI6MTY4NTI1MDIxOCwidXNlcklkIjoiNTI2MyJ9.AjCtpM_DKUkviiiyl664kVn3efocdfRqXkreIE8xds8";
     static String employee_id;
 
     @Test
-    public void getCreatedEmployee(){
+    public void bgetCreatedEmployee(){
         RequestSpecification preparedRequest = given().
                 header("Content-Type","application/json").
                 header("Authorization", token).
@@ -37,7 +37,7 @@ public class HardCodedExamples {
     }
 
     @Test
-    public void createEmployee(){
+    public void acreateEmployee(){
         //prepare the request
         RequestSpecification preparedRequest = given().
                 header("Content-Type","application/json").
@@ -73,9 +73,9 @@ public class HardCodedExamples {
         System.out.println("My test case is passed");
     }
 
-    //in homework, create a method to get all emoloyee status and job title
-    @Test
-    public void updateEmployee(){
+//in homework, create a method to get all emoloyee status and job title
+   @Test
+    public void cupdateEmployee(){
         RequestSpecification preparedRequest = given().
                 header("Content-Type","application/json").
                 header("Authorization", token).body("{\n" +

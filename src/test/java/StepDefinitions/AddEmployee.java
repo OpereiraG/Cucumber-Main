@@ -49,10 +49,9 @@ public class AddEmployee extends CommonMethods {
     @When("user clicks on save button")
     public void user_clicks_on_save_button() {
         //WebElement saveBtn = driver.findElement(By.id("btnSave"));
-        doClick(addEmployeePage.saveBtn);
-        System.out.println("My assertion is returning true");
         Assert.assertTrue(addEmployeePage.saveBtn.isDisplayed());
-
+        System.out.println("My assertion is returning true");
+        doClick(addEmployeePage.saveBtn);
     }
 
     @When("user enters {string} and {string} and  {string}")
@@ -61,6 +60,7 @@ public class AddEmployee extends CommonMethods {
         sendText(addEmployeePage.middleNameTextBox, mname);
         sendText(addEmployeePage.lastNameTextBox, lname);
     }
+
     @When("user captures the employee id")
     public void user_captures_the_employee_id() {
         GlobalVariables.emp_id = addEmployeePage.empIdLocator.getAttribute("value");
@@ -69,23 +69,24 @@ public class AddEmployee extends CommonMethods {
 
     @When("query the information in backend")
     public void query_the_information_in_backend() {
-        String query = "select * from hs_hr_employees where employee_id='"+ GlobalVariables.emp_id+"'";
-        //store the table coming from db, we used global variable here
-        //in his variable we got all the keys and values for the employee we searched
-       GlobalVariables.tabledata=  DBUtility.getListOfMapsFromRset(query);
+        String query = "select * from hs_hr_employees where employee_id='"
+                + GlobalVariables.emp_id+"'";
+        //to store the table coming from db, we used global variable here
+        //in this variable we got all the keys and values for the employee we searched
+        GlobalVariables.tabledata = DBUtility.getListOfMapsFromRset(query);
     }
 
     @Then("verify the results from frontend and backend")
     public void verify_the_results_from_frontend_and_backend() {
         //now, from all these values we need to compare one by one value
-       String firstNameFromDB = GlobalVariables.tabledata.get(0).get("emp_firstname");
+        String firstNameFromDB = GlobalVariables.tabledata.get(0).get("emp_firstname");
         System.out.println(firstNameFromDB);
-        String lastNameFromDB = GlobalVariables.tabledata.get(0).get("emp_lastname");
-        System.out.println(lastNameFromDB);
+        String lastNamefromDB = GlobalVariables.tabledata.get(0).get("emp_lastname");
+        System.out.println(lastNamefromDB);
 
         //adding assertions
-        Assert.assertEquals(firstNameFromDB,"nesha");
-        Assert.assertEquals(lastNameFromDB,"standart");
+        Assert.assertEquals(firstNameFromDB, "nesha");
+        Assert.assertEquals(lastNamefromDB, "standart");
         System.out.println("My assertion has passed my test case");
     }
 
